@@ -109,7 +109,6 @@ fetchHTML(url)
     //What we store in data is an array of all the text from the divs, which we extracted via cheerio 
      const data = parseHTML(html,3000);
      const dataString = data.join('')
-    // console.log(data);
     //need to include return keyword to pass the data to the next .then block
     
     return dataString
@@ -117,10 +116,10 @@ fetchHTML(url)
   //We pass along 'data' to our next .then block
   .then(dataFromParse => {
     // Pass the 'answer' to callChatGPT function as the 'text' argument
-    console.log(dataFromParse)
+    //console.log(dataFromParse)              //To showcase what text is extracted from the pdf
     callChatGPT(dataFromParse)
       .then(response => {
-        console.log(`The summary of bill: ${response}`);
+        console.log(`The summary of bill: ${response}`);    //outputs summary that ChatGPT created
       })
       .catch(error => {
         console.error('Error:', error);
